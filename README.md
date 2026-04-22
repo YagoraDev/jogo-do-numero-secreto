@@ -30,6 +30,7 @@ O projeto foi desenvolvido para testar e praticar conceitos como:
 ## Como acessar
 
 ### 🔗 Online
+Acessar website:
 https://jogo-tawny-xi.vercel.app/
 
 ### 💻 Localmente
