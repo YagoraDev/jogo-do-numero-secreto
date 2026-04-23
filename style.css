@@ -7,10 +7,11 @@
 
 body {
     background: linear-gradient(#1354A5 0%, #041832 33.33%, #041832 66.67%, #01080E 100%);
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
 }
 
 body::before {
@@ -18,7 +19,6 @@ body::before {
     background-repeat: no-repeat;
     background-position: right;
     content: "";
-    display: block;
     position: absolute;
     width: 100%;
     height: 100%;
@@ -27,43 +27,38 @@ body::before {
 
 .container {
     width: 80%;
+    max-width: 1200px;
     height: 80%;
+    min-height: 500px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     border-radius: 24px;
     border: 1px solid #1875E8;
-    box-shadow: 4px 4px 20px 0px rgba(1, 8, 14, 0.15);
+    box-shadow: 4px 4px 20px rgba(1, 8, 14, 0.15);
     background-image: url("img/Ruido.png");
-    background-size: 100% 100%;
+    background-size: cover;
     position: relative;
+    overflow: hidden; 
 }
 
 .container__conteudo {
     display: flex;
     align-items: center;
-    position: absolute;
-    bottom: 0;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+    position: relative;
 }
 
 .container__informacoes {
     flex: 1;
     padding: 3rem;
-}
-
-.container__botao {
-    border-radius: 16px;
-    background: #1875E8;
-    padding: 16px 24px;
-    width: 100%;
-    font-size: 24px;
-    font-weight: 700;
-    border: none;
-    margin-top: 2rem;
+    z-index: 2;
 }
 
 .container__texto {
-    margin: 16px 0 16px 0;
+    margin: 16px 0;
 }
 
 .container__texto-azul {
@@ -77,7 +72,7 @@ body::before {
     background-color: #FFF;
     border: none;
     color: #1875E8;
-    padding: 2rem;
+    padding: 1.5rem;
     font-size: 24px;
     font-weight: 700;
     font-family: 'Inter', sans-serif;
@@ -85,18 +80,38 @@ body::before {
 
 .container__botoes {
     display: flex;
-    gap: 2em;
+    gap: 1rem;
+    margin-top: 2rem;
 }
 
-img {
-    height: 550px;
+.container__botao {
+    border-radius: 16px;
+    background: #1875E8;
+    padding: 16px 24px;
+    width: 100%;
+    font-size: 20px;
+    font-weight: 700;
+    border: none;
+    cursor: pointer;
+}
+
+button:disabled {
+    background-color: gray;
+    cursor: not-allowed;
+}
+
+.container__imagem-pessoa {
+    height: 100%;
+    max-height: 600px;
+    width: auto;
+    object-fit: contain;
+    align-self: flex-end;
 }
 
 h1 {
     font-family: 'Chakra Petch', sans-serif;
     font-size: clamp(40px, 5vw, 72px);
-    padding-bottom: 1rem;
-    padding-top: 3rem;
+    padding: 2rem 0 1rem;
     line-height: 1.1;
     max-width: 600px;
 }
@@ -107,37 +122,64 @@ button {
 }
 
 .texto__paragrafo {
-    font-size: 32px;
+    font-size: 28px;
     font-weight: 400;
 }
 
-button:disabled {
-    background-color: gray;
-}
+/* ===== RESPONSIVIDADE ===== */
 
-@media screen and (max-width: 1250px) {
-    h1 {
-        font-size: 50px;
-    }
-
-    .container__botao {
-        font-size: 16px;
-    }
-
-    .texto__paragrafo {
-        font-size: 24px;
-    }
-
-    .container__imagem-pessoa {
-        display: none;
-    }
-
-    .container__conteudo {
-        display: block;
-        position: inherit;
+/* Tablets */
+@media (max-width: 1024px) {
+    .container {
+        width: 90%;
+        height: auto;
+        padding: 2rem 0;
     }
 
     .container__informacoes {
-        padding: 1rem;
+        padding: 2rem;
+    }
+
+    .container__imagem-pessoa {
+        height: 95%;
+    }
+}
+
+/* Celulares */
+@media (max-width: 768px) {
+    .container__conteudo {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .container__imagem-pessoa {
+        position: relative;
+        height: 280px;
+        margin-top: 1rem;
+    }
+
+    .container__botoes {
+        flex-direction: column;
+    }
+}
+
+/* Celulares pequenos */
+@media (max-width: 480px) {
+    h1 {
+        font-size: 32px;
+    }
+
+    .texto__paragrafo {
+        font-size: 18px;
+    }
+
+    .container__input {
+        height: 50px;
+        font-size: 18px;
+    }
+
+    .container__botao {
+        font-size: 14px;
+        padding: 12px;
     }
 }
