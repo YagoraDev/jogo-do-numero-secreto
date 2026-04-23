@@ -13,7 +13,6 @@ body {
     justify-content: center;
 }
 
-
 body::before {
     background-image: url("img/code.png");
     background-repeat: no-repeat;
@@ -39,7 +38,6 @@ body::before {
     background-size: 100% 100%;
     position: relative;
 }
-
 
 .container__conteudo {
     display: flex;
@@ -90,10 +88,17 @@ body::before {
     gap: 2em;
 }
 
+img {
+    height: 550px;
+}
+
 h1 {
     font-family: 'Chakra Petch', sans-serif;
-    font-size: 72px;
-    padding-bottom: 3rem;
+    font-size: clamp(40px, 5vw, 72px);
+    padding-bottom: 1rem;
+    padding-top: 3rem;
+    line-height: 1.1;
+    max-width: 600px;
 }
 
 p,
@@ -111,7 +116,6 @@ button:disabled {
 }
 
 @media screen and (max-width: 1250px) {
-
     h1 {
         font-size: 50px;
     }
@@ -119,7 +123,6 @@ button:disabled {
     .container__botao {
         font-size: 16px;
     }
-
 
     .texto__paragrafo {
         font-size: 24px;
@@ -135,6 +138,6 @@ button:disabled {
     }
 
     .container__informacoes {
-        padding: 1rem
+        padding: 1rem;
     }
 }
